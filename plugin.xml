@@ -17,52 +17,6 @@
     </js-module>
 
 
-    <platform name="android">
-
-        <!-- config.xml -->
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Mixpanel">
-                <param name="android-package" value="com.samz.cordova.mixpanel.MixpanelPlugin"/>
-            </feature>
-        </config-file>
-
-        <!-- Plugin files -->
-        <source-file src="src/android/MixpanelPlugin.java" target-dir="src/android"/>
-        <framework src="com.mixpanel.android:mixpanel-android:5.6.5"/>
-
-        <!--
-        This Mixpanel plugin doesn't force a specifics versions for 
-        - Google Play Services SDK
-        - Firebase Messaging
-        it simply requires it as '+' meaning the libs should be present.
-        this is done to avoid version conflicts with other plugins and/or your code.
-
-        You can specify a version number via the cordova preferences
-        
-        versions for these libs can be found on android releases page:
-        https://developers.google.com/android/guides/releases
-        -->
-        <preference name="PLAY_SERVICES_VERSION" default="+" />
-        <preference name="FIREBASE_VERSION" default="+" />
-
-        <framework src="com.google.android.gms:play-services-base:$PLAY_SERVICES_VERSION"/>
-        <framework src="com.google.firebase:firebase-messaging:$FIREBASE_VERSION"/>
-
-        <!-- AndroidManifest.xml -->
-        <!-- see https://github.com/mixpanel/mixpanel-android/blob/master/src/main/AndroidManifest.xml -->
-        <config-file target="AndroidManifest.xml" parent="/manifest">
-            <uses-permission android:name="android.permission.INTERNET"/>
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-        </config-file>
-
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <meta-data
-                    android:name="com.mixpanel.android.MPConfig.EnableDebugLogging"
-                    android:value="true"/>
-        </config-file>
-    </platform>
-
-
     <platform name="ios">
 
         <!-- config.xml -->
